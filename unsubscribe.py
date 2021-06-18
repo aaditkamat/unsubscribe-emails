@@ -13,7 +13,7 @@ def get_senders(path):
 def open_link(link):
     try:
         if re.search(r'(\<)([https{0,1}].+)(\>)', link):
-            driver = webdriver.Chrome(options=options)
+            driver = webdriver.Chrome()
             driver.get(link.strip('\<\>'))
         else:
             print(link)
