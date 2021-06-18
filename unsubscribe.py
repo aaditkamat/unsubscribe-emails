@@ -22,7 +22,8 @@ def open_link(link):
 
 def prompt(senders):
     for sender in senders:
-        name = re.match(r'(\"{0,1})(\w+)(\w+)?(\"{0,1})(\s\<.+\@.+\.com\>){0,1}', sender).group(2)
+        tokens = re.split(r'\s\<.+\@.+\.\w+\>', sender)
+        name = tokens[0].strip(r'\"')
         choice = input(f'Do you wish to unsubscribe from emails sent by {name}? ')
         if choice.lower() in ['y', 'yes']:
             open_link(senders[sender])
